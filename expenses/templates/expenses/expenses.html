@@ -1,0 +1,121 @@
+{% extends 'expenses/base.html' %}
+{% load static %}
+{% block css %}
+<link href="{% static 'vendor/css/expenses.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="title">
+    <h1>Добавить траты</h1>
+  </div>
+<div class="needs-validation form">
+
+
+    <form class="needs-validation" action="" method="post">
+      {% csrf_token %}
+  <div class="form-row mr-12 ml-12">
+    <div class="col-md-4 mb-3">
+      <label for="validationCustom01">Название</label>
+      <input name="name" type="text" class="form-control" id="validationCustom01" placeholder="Названиe" value="" required>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationCustom02">Описание</label>
+      <input type="text" name='description' class="form-control" id="validationCustom02" placeholder="Описание" value="" >
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationCustomDate">Дата</label>
+      <div class="input-group">
+        <input name='date' type="date" class="form-control" id="validationCustomDate" placeholder="23.09.2000" aria-describedby="inputGroupPrepend" required>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="validationCustom03">Сумма</label>
+      <input name='price' type="number" class="form-control" id="validationCustom03" placeholder="200" required>
+      <div class="invalid-feedback">
+        Please provide a valid date.
+      </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+      <label for="category">Категория</label>
+      <select name="category" class="form-control" id="category">
+        {% for category in categories %}
+        <option value=f"{{category.name}}"> {{category.name}}</option>
+        {% endfor %}
+      </select>
+      <div class="invalid-feedback">
+        Please provide a valid category.
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationCustom05">Количество</label>
+      <input name='amount' type="text" class="form-control" id="validationCustom05" placeholder="Количество" >
+      <div class="invalid-feedback">
+        Please provide a valid number.
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary" type="submit">Добавить</button>
+</form>
+</div>
+<div class="title">
+    <h1>Добавить категорию</h1>
+  </div>
+<div class="needs-validation form">
+    <form class="needs-validation" novalidate >
+  <div class="form-row mr-12 ml-12">
+    <div class="col-md-4 mb-3">
+      <label for="validationCustom06">Название</label>
+      <input type="text" class="form-control"
+       id="validationCustom06" placeholder="Названиe" value="" required>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationCustom07">Описание</label>
+      <input  type="text" class="form-control" id="validationCustom07" placeholder="Описание" value="" >
+    </div>
+  </div>
+  <button class="btn btn-primary" type="submit" value="Submit">Добавить</button>
+</form>
+</div>
+
+<div class="title"><h1>Траты</h1></div>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Название</th>
+      <th scope="col">Описание</th>
+      <th scope="col">Сумма</th>
+      <th scope="col">Дата</th>
+      <th scope="col">Количество</th>
+      <th scope="col">Категория</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for expense in expenses %}
+  <tr>
+    <td scope="col">
+        {{ expense.name }}
+    </td>
+    <td scope="col">
+      {{ expense.description }}
+    </td>
+    <td scope="col">
+      {{ expense.price }}
+    </td>
+        <td scope="col">
+      {{ expense.date}}
+    </td>
+        <td scope="col">
+      {{ expense.amount}}
+          </td>
+    <td scope="col">
+      {{ expense.category}}
+          </td>
+  </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

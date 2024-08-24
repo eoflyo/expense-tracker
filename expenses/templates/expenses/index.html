@@ -1,0 +1,25 @@
+{% extends 'expenses/base.html' %}
+{% load static %}
+ from django.db.models import Sum
+{% block css %}
+<link href="{% static 'vendor/css/index.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="title">
+    <h1>По категориям</h1>
+  </div>
+
+<div class="card" style="width: 30rem;">
+  <ul class="list-group list-group-flush">
+      {% for categorys in categories %}
+    <li class="list-group-item">
+        <div class="row">
+    <div class="col text-right">{{ categorys }}</div>
+    <div class="col text-right" >2000</div>
+        </div>
+    </li>
+      {% endfor %}
+  </ul>
+</div>
+{% endblock %}
