@@ -17,11 +17,12 @@ Including another URLconf
 from tkinter.font import names
 
 from django.contrib import admin
-from django.urls import path
-from expenses.views import index, expenses
+from django.urls import path, include
+from expenses.views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
-    path('expenses/', expenses, name='expenses'),
+    path('expenses/', include('expenses.urls', namespace='expenses')),
+    path('users/', include('users.urls', namespace='users')),
 ]

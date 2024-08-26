@@ -1,0 +1,26 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block css %}
+<link href="{% static 'vendor/css/login.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<form class="row g-3 form">
+     <div class="col-12">
+    <label for="inputName" class="form-label">Имя</label>
+    <input type="text" class="form-control" id="inputName" placeholder="Имя">
+  </div>
+  <div class="col-12">
+    <label for="inputPassword4" class="form-label">Пароль</label>
+    <input type="password" class="form-control" placeholder="Пароль" id="inputPassword4">
+  </div>
+  <div class="col-12 button">
+    <button type="submit" class="btn button btn-primary">Зарегистрироваться</button>
+  </div>
+    <div>
+        Уже есть акакаунт?
+        <a class="nav-link" href="{% url 'users:login' %}">Войти</a>
+    </div>
+</form>
+{% endblock %}

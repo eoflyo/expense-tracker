@@ -1,0 +1,30 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block css %}
+<link href="{% static 'vendor/css/login.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<form method='post' action="{% url 'users:login' %}" class="row g-3 form">
+    {% csrf_token %}
+    {{ form.as_p }}
+<!--     <div class="col-12">-->
+<!--    <label for="inputName" class="form-label">Имя</label>-->
+<!--    <input type="text" class="form-control" id="inputName" placeholder="Имя">-->
+<!--  </div>-->
+<!--  <div class="col-12">-->
+<!--    <label for="inputPassword4" class="form-label">Пароль</label>-->
+<!--    <input type="password" class="form-control" placeholder="Пароль" id="inputPassword4">-->
+<!--  </div>-->
+  <div class="col-12 button">
+    <button type="submit" class="btn button btn-primary">Войти</button>
+  </div>
+    <div class="col-12 text">
+        Нет акакаунта?
+
+    </div>
+    <div class="col-12 text"><a class="nav-link" href="{% url 'users:registration' %}">Пройти регистрацию</a></div>
+
+</form>
+{% endblock %}

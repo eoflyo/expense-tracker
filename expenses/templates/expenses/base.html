@@ -23,37 +23,34 @@
 <body>
 
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top >
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top ">
     <div class="container">
-        <a class="navbar-brand" href="{% url 'index' %}">Траты</a>
+        <a class="navbar-brand" >{{ title }}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'expenses' %}">Диаграмма<i class="fas fa-shopping-bag"></i> </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="users/login.html">Войти <i class="fas fa-sign-in-alt"></i></a>
-                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-user-circle"></i>
+                        Меню
                     </a>
+
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li>
-                            <a class="dropdown-item" href="users/profile.html">Занести траты</a>
+                            <a class="dropdown-item" href="{% url 'expenses:expenses' %}">Занести траты</a>
                         </li>
-                        <li><a class="dropdown-item" href="orders/orders.html">Траты</a></li>
+                        <li><a class="dropdown-item" href="{% url 'expenses:index' %}">Диаграмма </a></li>
+<!--                        <li><a class="dropdown-item" href="orders/orders.html">Траты</a></li>-->
                         <li><a class="dropdown-item" href="#">Админ-панель</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="{% url 'users:login' %}">
                                 Выйти
                             </a>
                         </li>
