@@ -1,0 +1,42 @@
+{% extends 'expenses/base.html' %}
+{% load static %}
+{% block css %}
+<link href="{% static 'vendor/css/expenses.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="title">
+    <h1>Добавить категорию</h1>
+  </div>
+<div class="needs-validation form">
+    <form class="needs-validation" action="" method="post">
+      {% csrf_token %}
+  <div class="form-row mr-12 ml-12">
+    <div class="col-md-4 mb-3">
+      <label for="{{ category_form.name.id_for_label}}">Название</label>
+      {{ category_form.name}}
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="{{ category_form.description.id_for_label}}">Описание</label>
+      {{ category_form.description }}
+    </div>
+  </div>
+  <button class="btn btn-primary" type="submit" id="category_form" value="category_form">Добавить</button>
+</form>
+</div>
+<div class="title">
+    <h1>Ваши категории:</h1>
+  </div>
+<div class="card" style="width: 30rem; margin-bottom: 100px;">
+  <ul class="list-group list-group-flush">
+      {% for category in categories %}
+    <li class="list-group-item">
+        <div class="row">
+
+            <div class="col text-center">{{ category }}</div>
+        </div>
+    </li>
+      {% endfor %}
+  </ul>
+</div>
+{% endblock%}
